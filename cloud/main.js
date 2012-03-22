@@ -17,8 +17,37 @@ exports.testWeb = function(params, callback) {
       console.log("Error : " + err.message);
     } else {
       var data = result.body;
-      console.log("Response is " + data);
+      console.log("Response is " + data.length);
     }
     return callback(err, result);
   })
 }
+
+exports.testCreateCache = function(params, callback){
+  
+}
+
+
+//load
+$fh.cache({
+  act: "load",
+  key: key
+}, function(err, res) {
+  if (err) {
+    console.log(err.toString());
+  } else {
+    console.log(res.toString());
+  }
+})
+
+//remove
+$fh.cache({
+  act: "remove",
+  key: key
+}, function(err, res) {
+  if (err) {
+    console.log(err.toString());
+  } else {
+    console.log(res.toString());
+  }
+})
