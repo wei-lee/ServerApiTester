@@ -81,7 +81,6 @@ exports.testFeed = function(params, callback){
     if (err) {
       console.log("Error is : " + err.message)
     } else {
-      console.log("feed results: " + JSON.stringify(result))
       if(result.list){
         entries = result.list
       } else {
