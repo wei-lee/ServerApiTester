@@ -149,6 +149,7 @@ exports.testDbCreate = function(params, callback){
     console.log("Error " + err)
   } else {
     console.log(JSON.stringify(data))
+    return callback(err, data);
   }
 });
 }
