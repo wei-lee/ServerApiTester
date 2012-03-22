@@ -119,7 +119,7 @@ exports.testSession = function(params, callback){
                    console.log("Session " + sessionId + " removed.");
                 } else {
                    console.log("Failed to remove session " + sessionId);
-                   callback(null, "done");
+                   return callback(null, "done");
                 }
               
               }
