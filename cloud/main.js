@@ -117,9 +117,9 @@ exports.testSession = function(params, callback){
               } else {
                 if(res){
                    console.log("Session " + sessionId + " removed.");
+                   return callback(null, {"result":"done"});
                 } else {
                    console.log("Failed to remove session " + sessionId);
-                   return callback(null, {"result":"done"});
                 }
               
               }
