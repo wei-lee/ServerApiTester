@@ -27,3 +27,9 @@ function testFeed(){
     alert(JSON.stringify(res));
   })
 }
+
+function testSession(){
+  $fh.act({act:'testSession', req:{}}, function(res){
+    alert(JSON.stringify(res));
+  })
+}
