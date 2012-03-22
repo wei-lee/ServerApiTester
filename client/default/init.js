@@ -22,7 +22,7 @@ function testRemoveCache(){
   })
 }
 
-function testRemoveCache(){
+function testFeed(){
   $fh.act({act:'testFeed', req:{}}, function(res){
     alert(JSON.stringify(res));
   })
