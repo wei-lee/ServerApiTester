@@ -87,7 +87,7 @@ exports.testFeed = function(params, callback){
         entries = JSON.parse(result.body).list;
       }
       for (var i = 0; i < entries.length; i++) {
-        console.log("Entry title : " + entries[i].title + " : Content : " + entries[i].description);
+        console.log("Entry title : " + entries[i].fields.title + " : Content : " + entries[i].fields.description);
       }
     }
     return callback(err, result)
