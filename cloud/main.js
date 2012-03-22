@@ -98,7 +98,7 @@ exports.testSession = function(params, callback){
   console.log("Testing session");
   var sessionData = JSON.stringify({"foo":"bar"});
   var sessionId = "randomId000000";
-  var count = 0;
+
     //save a new session
    $fh.session.set(sessionId, sessionData, 0, function(err, res){
       
@@ -106,42 +106,28 @@ exports.testSession = function(params, callback){
         console.log(err)    
       } else {
         console.log("Session saved. Session id is " + res)
-      }
-      count++;
-    })
-
-    //load an existing session
-    $fh.session.get(sessionId, function(err, res){
-      if(err){
-        console.log(err)    
-      } else {
-        console.log("Session loaded. Session data is " + res)    
-      }
-      count++;
-    })
-
-    //remove a session
-    $fh.session.remove(sessionId, function(err, res){
-      if(err){
-        console.log(err)    
-      } else {
-        if(res){
-          console.log("Session " + sessionId + " removed.");
-        } else {
-          console.log("Failed to remove session " + sessionId);
-        }
-        count++;
+        $fh.session.get(sessionId, function(err, res){
+          if(err){
+            console.log(err)    
+          } else {
+            console.log("Session loaded. Session data is " + res);
+            $fh.session.remove(sessionId, function(err, res){
+              if(err){
+                console.log(err)    
+              } else {
+                if(res){
+                   console.log("Session " + sessionId + " removed.");
+                } else {
+                   console.log("Failed to remove session " + sessionId);
+                   callback(null, "done");
+                }
+              
+              }
+            })
+          }
+        })
       }
     })
-    
-    var timer = setInterval(function(){
-      if(count == 3){
-        clearInterval(timer);
-        callback(null, "done");
-      } else {
-        console.log("Waiting for function to finish");
-      }
-    }, 100)
 }
 
 
