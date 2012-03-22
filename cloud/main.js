@@ -72,6 +72,25 @@ exports.testRemoveCache = function(params, callback){
   })
 }
 
+exports.testFeed = function(params, callback){
+  console.log("Testing get feed");
+  $fh.feed({
+    'url': "http://www.feedhenry.com/feed",
+    'list-max': 10
+  }, function(err, result) {
+    if (err) {
+      console.log("Error is : " + err.message)
+    } else {
+      entries = result.list;
+      for (var i = 0; i < entries.length; i++) {
+        console.log("Entry title : " + entries[i].title + " : Content : " + entries[i].description);
+      }
+    }
+    return callback(err, result)
+  })
+
+}
+
 
 
 
