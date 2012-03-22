@@ -5,7 +5,7 @@ var util = require('util');
  * - the return 'callback' method signature is 'callback (error, data)', where 'data' is a JSON object.
 */
 exports.testWeb = function(params, callback) {
-  console.log("testing web calls")
+  console.log("Testing web calls")
   $fh.web({
     url: "http://www.google.com",
     method: "GET",
@@ -17,37 +17,61 @@ exports.testWeb = function(params, callback) {
       console.log("Error : " + err.message);
     } else {
       var data = result.body;
-      console.log("Response is " + data.length);
+      console.log("Response size is " + data.length);
     }
     return callback(err, result);
   })
 }
 
 exports.testCreateCache = function(params, callback){
-  
+  console.log("Testing create cache")
+  var key = "foo";
+  var value = "bar";
+  $fh.cache({
+    act: "save",
+    key: key,
+    value: value
+  }, function(err, res) {
+    if (err) {
+      console.log(err.toString());
+    } else {
+      console.log(res.toString());
+    }
+    return callback(err, res)
+  })
+}
+
+exports.testLoadCache = function(params, callback) {
+  console.log("Testing load cache");
+  $fh.cache({
+    act: "load",
+    key: "foo"
+  }, function(err, res) {
+    if (err) {
+      console.log(err.toString());
+    } else {
+      console.log(res.toString());
+    }
+    return callback(err, res)
+  })  
+}
+
+exports.testRemoveCache = function(params, callback){
+  console.log("Testing remove cache");
+  //remove
+  $fh.cache({
+    act: "remove",
+    key: "foo"
+  }, function(err, res) {
+    if (err) {
+      console.log(err.toString());
+    } else {
+      console.log(res.toString());
+    }
+    return callback(err, res)
+  })
 }
 
 
-//load
-$fh.cache({
-  act: "load",
-  key: key
-}, function(err, res) {
-  if (err) {
-    console.log(err.toString());
-  } else {
-    console.log(res.toString());
-  }
-})
 
-//remove
-$fh.cache({
-  act: "remove",
-  key: key
-}, function(err, res) {
-  if (err) {
-    console.log(err.toString());
-  } else {
-    console.log(res.toString());
-  }
-})
+
