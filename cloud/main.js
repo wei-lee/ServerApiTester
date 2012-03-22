@@ -138,8 +138,10 @@ exports.testSession = function(params, callback){
       if(count == 3){
         clearInterval(timer);
         callback(null, "done");
+      } else {
+        console.log("Waiting for function to finish");
       }
-    }, 2000)
+    }, 100)
 }
 
 
