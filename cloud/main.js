@@ -94,6 +94,43 @@ exports.testFeed = function(params, callback){
   })
 }
 
+exports.testSession = function(params, callback){
+  console.log("Testing session");
+  var sessionData = JSON.stringify({"foo":"bar"});
+  var sessionId = "randomId000000";
+    
+    //save a new session
+    $fh.session.set(sessionId, sessionData, 0, function(err, res){
+      if(err){
+        console.log(err)    
+      } else {
+        console.log("Session saved. Session id is " + res)
+      }
+    })
+
+    //load an existing session
+    $fh.session.get(sessionId, function(err, res){
+      if(err){
+        console.log(err)    
+      } else {
+        console.log("Session loaded. Session data is " + res)    
+      }
+    })
+
+    //remove a session
+    $fh.session.remove(sessionId, function(err, res){
+      if(err){
+        console.log(err)    
+      } else {
+        if(res){
+          console.log("Session " + sessionId + " removed.");
+        } else {
+          console.log("Failed to remove session " + sessionId);
+        }
+      }
+    })
+}
+
 
 
 
