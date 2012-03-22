@@ -75,7 +75,7 @@ exports.testRemoveCache = function(params, callback){
 exports.testFeed = function(params, callback){
   console.log("Testing get feed");
   $fh.feed({
-    'url': "http://www.feedhenry.com/feed",
+    'link': "http://www.feedhenry.com/feed",
     'list-max': 10
   }, function(err, result) {
     if (err) {
