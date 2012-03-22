@@ -131,5 +131,27 @@ exports.testSession = function(params, callback){
 }
 
 
+exports.testDbCreate = function(params, callback){
+  console.log("test db create")
+  $fh.db({
+  "act": "create",
+  "type": "myFirstEntity",
+  "fields": {
+    "firstName": "Joe",
+    "lastName": "Bloggs",
+    "address1": "22 Blogger Lane",
+    "address2": "Bloggsville",
+    "country": "Bloggland",
+    "phone": "555-123456"
+  }
+}, function(err, data) {
+  if (err) {
+    console.log("Error " + err)
+  } else {
+    console.log(JSON.stringify(data))
+  }
+});
+}
+
 
 
