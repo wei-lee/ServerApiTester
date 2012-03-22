@@ -135,7 +135,7 @@ exports.testDbCreate = function(params, callback){
   console.log("test db create")
   $fh.db({
   "act": "create",
-  "type": "myFirstEntity",
+  "type": "myFirstTestEntity",
   "fields": {
     "firstName": "Joe",
     "lastName": "Bloggs",
