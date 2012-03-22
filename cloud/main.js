@@ -133,6 +133,13 @@ exports.testSession = function(params, callback){
         count++;
       }
     })
+    
+    var timer = setInterval(function(){
+      if(count == 3){
+        clearInterval(timer);
+        callback(null, "done");
+      }
+    }, 2000)
 }
 
 
