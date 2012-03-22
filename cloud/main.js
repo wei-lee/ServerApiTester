@@ -98,14 +98,16 @@ exports.testSession = function(params, callback){
   console.log("Testing session");
   var sessionData = JSON.stringify({"foo":"bar"});
   var sessionId = "randomId000000";
-    
+  var count = 0;
     //save a new session
-    $fh.session.set(sessionId, sessionData, 0, function(err, res){
+   $fh.session.set(sessionId, sessionData, 0, function(err, res){
+      
       if(err){
         console.log(err)    
       } else {
         console.log("Session saved. Session id is " + res)
       }
+      count++;
     })
 
     //load an existing session
@@ -115,6 +117,7 @@ exports.testSession = function(params, callback){
       } else {
         console.log("Session loaded. Session data is " + res)    
       }
+      count++;
     })
 
     //remove a session
@@ -127,6 +130,7 @@ exports.testSession = function(params, callback){
         } else {
           console.log("Failed to remove session " + sessionId);
         }
+        count++;
       }
     })
 }
