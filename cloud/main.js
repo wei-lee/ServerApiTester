@@ -13,10 +13,10 @@ exports.testWeb = function(params, callback) {
     period: 60000 //cache for 1 min
   }, function(err, result) {
     if (err) {
-      $fh.log("Error : " + err.message);
+      console.log("Error : " + err.message);
     } else {
       var data = result.body;
-      $fh.log("Response is " + data);
+      console.log("Response is " + data);
     }
     return callback(err, result);
   })
