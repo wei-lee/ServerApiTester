@@ -33,3 +33,9 @@ function testSession(){
     alert(JSON.stringify(res));
   })
 }
+
+function testDbCreate(){
+  $fh.act({act:'testDbCreate', req:{}}, function(res){
+    alert(JSON.stringify(res))
+  })
+}
