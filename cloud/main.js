@@ -5,6 +5,7 @@ var util = require('util');
  * - the return 'callback' method signature is 'callback (error, data)', where 'data' is a JSON object.
 */
 exports.testWeb = function(params, callback) {
+  console.log("testing web calls")
   $fh.web({
     url: "http://www.google.com",
     method: "GET",
